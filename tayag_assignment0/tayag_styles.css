@@ -1,0 +1,35 @@
+h1 {
+	background-color: black;
+	color: white;
+	width: 60%;
+	margin: auto;
+}
+
+#content {
+    margin: auto;
+    width: 60%;
+}
+
+#image{
+	margin: auto;
+	width: 33%;
+	float: left;
+	padding-top: 20px;
+}
+
+.container{
+	width: 95%
+}
+
+#background{
+	width:66%;
+	float: right;
+	border-style: solid;
+	border-width: 2px;
+}
+
+h3{
+	text-decoration: underline;
+	background-color: slateblue;
+	color: lightgrey;
+}
