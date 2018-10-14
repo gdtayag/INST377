@@ -206,8 +206,132 @@ var organizations = [
 // outputs the first item of the organizations array. Just for testing.
 console.log(organizations[0]); 
 
-// Your JavaScript code goes here
+//gets reference for body
+var body = document.getElementById("org_table");
 
+//sets up table
+var table = document.createElement("table");
+var table_body = document.createElement("tbody");
+
+//first row
+var row = document.createElement("tr");
+
+//counts variable for questions
+var count = 0;
+
+var cell = document.createElement("td");
+var cell_text = document.createTextNode("# of Non-Profits");
+
+//adds cell to row
+cell.appendChild(cell_text);
+row.appendChild(cell);
+
+organizations.forEach(count_non_profits);
+
+add_to_table_and_reset();
+
+cell_text = document.createTextNode("# of organizations < 10 years old");
+
+//adds cell to row
+cell.appendChild(cell_text);
+row.appendChild(cell);
+
+organizations.forEach(count_org_years)
+
+add_to_table_and_reset();
+
+cell_text = document.createTextNode("# of organizations in North America");
+
+//adds cell to row
+cell.appendChild(cell_text);
+row.appendChild(cell);
+
+organizations.forEach(count_orgs_in_NA);
+
+add_to_table_and_reset();
+
+cell_text = document.createTextNode("# of organizations using Transportation type data");
+
+//adds cell to row
+cell.appendChild(cell_text);
+row.appendChild(cell);
+
+organizations.forEach(count_orgs_transprotation_data);
+
+add_to_table_and_reset();
+
+cell_text = document.createTextNode("# of organizations with size <= 10");
+
+//adds cell to row
+cell.appendChild(cell_text);
+row.appendChild(cell);
+
+organizations.forEach(count_orgs_size);
+
+add_to_table_and_reset();
+
+//adds table to document
+table.appendChild(table_body);
+body.appendChild(table);
+table.setAttribute("border", "2");
+
+//creates # of non profits cell of table
+function count_non_profits(value){
+    if(value["Organization Type"] == "Nonprofit"){
+        count++;
+    }
+}
+
+//counts # of orgs < 10 years old
+function count_org_years(value){
+    if (2018 - value["Founding Year"] < 10) {
+        count++;
+    }
+}
+
+//counts # of orgs in North America
+function count_orgs_in_NA(value){
+    if (value["Region"] == "North America") {
+        count++;
+    }
+}
+
+//counts # of orgs using Transportation data
+function count_orgs_transprotation_data(value){
+    if (value["Type of Data Used"].includes("Transportation")) {
+        count++;
+    }
+}
+
+//counts # of orgs with size > 10
+function count_orgs_size(value) {
+    if (value["Size"] == "1 to 10") {
+        count++;
+    }
+}
+
+//adds cell to row, then adds row to table, and resets for next row
+function add_to_table_and_reset(){
+    //creates the counts cell
+    cell = document.createElement("td");
+    cell_text = document.createTextNode(count);
+
+    //adds counts cell to row
+    cell.appendChild(cell_text);
+    row.appendChild(cell);
+
+    //adds row to table
+    table_body.appendChild(row);
+
+    //resets count
+    count = 0;
+
+    //creates new row
+    row = document.createElement("tr");
+
+    //creates org age cell
+    cell = document.createElement("td");
+}
 
 </script>
 
